@@ -19,7 +19,7 @@ function Tareas() {
   const KeyDown = (event) => {
 
     // Si se presiona Enter y el campo de entrada no está vacío
-    if (event.key === 'Enter' && nuevaTarea.trim !== '') {
+    if (event.key === 'Enter' && nuevaTarea.trim() !== '') {
       
       // Creamos una nueva lista de tareas a partir de la lista actual
       const nuevasTareas = [...tareas, nuevaTarea];
@@ -34,10 +34,7 @@ function Tareas() {
 
   // Función para eliminar una tarea
   const deleteTarea = (index) => {
-    // Creamos una copia de la lista de tareas para evitar modificar el estado directamente
-    const nuevasTareas = [...tareas];
-    // Eliminamos la tarea en la posición indicada utilizando splice
-    nuevasTareas.splice(index, 1);
+    const nuevasTareas = tareas.filter((_, i) => i !== index);
     // Actualizamos el estado con la lista modificada
     setTareas(nuevasTareas);
   };
